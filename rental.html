@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>HW #2 Site</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarID">
+                    <div class="navbar-nav border">
+                        <div class="nav-item active">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </div>
+                        <div class="nav-item active">
+                            <a class="nav-link" href="rental.html">Rental</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container-fluid row">
+            <div>
+                <h1 class="border-bottom mb-3">Rental Form</h1>
+            </div>
+            <form method="GET" id="rentalForm">
+                <div class="row">
+                    <div class="col-4 mb-3">
+                        <div class="form-group">
+                            <label class="mb-2" for="model">Model:</label>
+                            <select class="form-control" id="model" required>
+                                <option></option>
+                                <option>SUV: Honda CR-V</option>
+                                <option>Minivan: Chrysler Pacifica</option>
+                                <option>Compact car: Ford Escape</option>
+                                <option>Full-size car: Chevy Impala</option>
+                                <option>Luxury Car: Tesla 3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <output class="col-4 offset-4 output" id="dailyrate" for="idModel">Daily Rate: 0</output>
+                </div>
+                <div class="row mb-3">
+                    <div class="form-group col-4">
+                        <label class="mb-2" for="startdate">Start Date:</label>
+                        <input type="date" class="form-control" id="startdate" required>
+                    </div>
+                </div>
+                <div class="row" id="discountCheck">
+                    <div class="col-4">
+                        <div class="form-check form-check-inline mb-3 ">
+                            <input class="form-check-input" type="radio" name="options" id="option1" value="0.25" required>
+                            <label class="form-check-label" for="option1">Senior</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="options" id="option2" value="0.15">
+                            <label class="form-check-label" for="option2">Government</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="options" id="option3" value="0.10">
+                            <label class="form-check-label" for="option3">Corporate</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="options" id="option4" value="0.20">
+                            <label class="form-check-label" for="option4">AAA</label>
+                        </div>
+                    </div>
+                    <output class="col-4 offset-4 output" id="discount" for="gridCheck">Discount: 0</output>
+                </div>
+
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group col-xs-4 mb-3">
+                            <input class="form-check-input" type="checkbox" id="gridCheck">
+                            <label class="form-check-label" for="gridCheck"> Do you want
+                                Insurance?</label>
+                        </div>
+                    </div>
+                    <output class="col-4 offset-4 output" id="insurance" for="gridCheck">Insurance: 0</output>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="form-label" for="numberdrivers">Drivers:</label>
+                            <input class="form-control" type="number" name="drivers" id="numberdrivers" min="0" required>
+                        </div>
+                    </div>
+                    <output class="col-4 offset-4 output" id="totaldriversoutput" for="drivers">Drivers: 0</output>
+                    <output class="offset-8" id="bydaycost" for="drivers">Cost per day: 0</output>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="form-label mb-3" for="numberdays">Number of days:</label>
+                            <input class="form-control" type="number" name="days" id="numberdays" min="0" required>
+                        </div>
+                    </div>
+                    <output class="col-4 offset-4 output" id="totalcost" for="days">Total Cost: 0</output>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-4">
+                        <button type="submit" onclick="displayRentalRate()" class="btn btn-primary" id="submitButton">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="table"></div>
+    </main>
+    <footer>
+        <!-- place footer here -->
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script src="form.js"></script>
+</body>
+
+</html>
